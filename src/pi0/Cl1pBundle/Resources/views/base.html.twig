@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Cl1p{% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+
+        {% stylesheets
+        '@Cl1pBundle/Resources/public/css/style.css'
+        '@Cl1pBundle/Resources/public/css/semantic.min.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+</head>
+
+<body>
+
+<div class="ui page grid">
+
+    <div class="row">
+        <div class="ui inverted menu navbar">
+            {% include "Cl1pBundle::base.menu.html.twig" %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="column padding-reset">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+
+
+{% block javascripts %}
+    {% javascripts
+    '@Cl1pBundle/Resources/public/js/jquery.min.js'
+    '@Cl1pBundle/Resources/public/js/semantic.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+</body>
+</html>

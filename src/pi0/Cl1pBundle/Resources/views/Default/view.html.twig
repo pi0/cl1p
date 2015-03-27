@@ -1,0 +1,87 @@
+{% extends 'Cl1pBundle::base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@Cl1pBundle/Resources/public/js/codemirror.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        CodeMirror.fromTextArea(document.getElementById("data"), {
+            lineNumbers: true,
+            mode: "php",
+            gutter: true,
+            lineWrapping: true
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets '@Cl1pBundle/Resources/public/css/codemirror.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    <style>
+        .CodeMirror {
+            border: 1px solid #eee;
+            height: auto;
+        }
+
+        .data_container {
+            min-width: 400px;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <form action="" method="post">
+
+        <div class="row">
+            <div class="sixteen wide column">
+                {#<div class="row ui input">#}
+                <input type="hidden" placeholder="Title" name="title" value="{{ clip.title }}">
+                {#</div>#}
+                <h1>{{ clip.title }}</h1>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="sixteen wide column">
+                <textarea title="" name="data" id="data" class="data_container">{{ clip.data }}</textarea>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            {% if clip.updatedAt != null %}
+                Last edited {{ clip.updatedAt.format('Y-m-d H:i:s') }}
+            {% endif %}
+        </div>
+
+        <br>
+
+        <div class="row">
+
+            <input type="submit" class="ui primary button" value="Save Clip">
+
+            {#<div class="ui toggle checkbox">#}
+            {#<input type="checkbox" name="public" title="">#}
+            {#<label>flash clip</label>#}
+            {#</div>#}
+
+        </div>
+
+    </form>
+
+
+{% endblock %}
+

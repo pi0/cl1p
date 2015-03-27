@@ -1,0 +1,29 @@
+<a href="{{ path('pi0_cl1p_default_index') }}" class="brand item">Cl1p</a>
+
+{% macro menu_item(title,route) %}
+    <a href="{{ path(route) }}"
+       class="item{% if app.request.attributes.get('_route') == route %} active{% endif %}">
+        {{ title }}</a>
+{% endmacro %}
+{% import _self as self %}
+
+{{ self.menu_item('Home','pi0_cl1p_default_index') }}
+{{ self.menu_item('Help','pi0_cl1p_default_help') }}
+
+
+<div class="right menu">
+    <div class="item">
+        <div class="ui input">
+            <input type="email" placeholder="Email">
+        </div>
+    </div>
+    <div class="item">
+        <div class="ui input">
+            <input type="password" placeholder="Password">
+        </div>
+    </div>
+    <div class="item">
+        <button class="ui green button">Sign in</button>
+    </div>
+
+</div>

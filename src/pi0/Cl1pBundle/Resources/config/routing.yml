@@ -1,0 +1,9 @@
+cl1p_homepage:
+    resource:   "@Cl1pBundle/Controller/DefaultController.php"
+    type:       annotation
+    prefix:     /
+
+cl1p_clip:
+    resource:    "@Cl1pBundle/Controller/ClipController.php"
+    type:       annotation
+    prefix:     /clip

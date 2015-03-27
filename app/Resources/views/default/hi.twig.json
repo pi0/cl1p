@@ -1,0 +1,4 @@
+{
+  "message": "Hi {{ name }}",
+  "page": "{{ app.request.query.get('page') }}"
+}
